@@ -1,0 +1,28 @@
+import itertools
+import os
+import random
+import string
+from typing import List
+
+
+def generate_wordlist(alphabet, min_length, max_length):
+    possible_words = []
+    for length in range(min_length, max_length + 1):
+        possible_words.extend([''.join(p) for p in itertools.product(alphabet, repeat=length)])
+    return possible_words
+
+
+# Input Given By User
+
+alphabet = input("Give alphabets,numbers,special characters for wordlist(Uppercase/Lowercase matters): ")
+
+file_name = input("Enter filename txt format: ")
+min_length = int(input("Enter minimum length: "))
+max_length = int(input("Enter maximum length: "))
+
+possible_words = generate_wordlist(alphabet, min_length, max_length)
+
+with open(file_name, "w") as file:
+    for word in possible_words:
+        file.write(word + "\n")
+        file.close()
