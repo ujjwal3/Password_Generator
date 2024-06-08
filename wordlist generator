@@ -25,4 +25,4 @@ possible_words = generate_wordlist(char, min_length, max_length)
 with open(file_name, "w") as file:
     for word in possible_words:
         file.write(word + "\n")
-        file.close()
+        
